@@ -7,11 +7,18 @@ from jobagent.flows.f0_profile.prefs import SearchPrefs
 
 TITLE_BLACKLIST = ["sales", "bpo", "support", "recruiter", "telecaller", "telesales", "customer care",
                    "business development", "bde", "data entry"]
-DEFAULT_WHITELIST = ["ai", "genai", "llm", "ml", "agent", "nlp", "python"]
+DEFAULT_WHITELIST = ["ai", "genai", "gen ai", "llm", "ml", "agent", "agentic", "nlp", "python", "artificial intelligence",
+                     "machine learning", "deep learning", "generative", "data scientist"]
 
 
 def _has_word(text: str, word: str) -> bool:
     return re.search(rf"(?<![a-z0-9]){re.escape(word.lower())}(?![a-z0-9])", text.lower()) is not None
+
+
+def _has_keyword(text: str, word: str) -> bool:
+    """Whitelist match. Keywords of 4+ letters also match longer forms ('Agent' matches 'Agentic', 'Agents')."""
+    tail = "[a-z]*" if len(word) >= 4 else ""
+    return re.search(rf"(?<![a-z0-9]){re.escape(word.lower())}{tail}(?![a-z0-9])", text.lower()) is not None
 
 
 def _exp_range(text: str | None):
@@ -42,7 +49,7 @@ def passes(job: JobRaw, prefs: SearchPrefs, now: datetime) -> tuple[bool, str, l
             return False, f"blacklisted title word '{w}'", flags
 
     whitelist = prefs.keywords or DEFAULT_WHITELIST
-    if not any(_has_word(job.title, w) for w in whitelist):
+    if not any(_has_keyword(job.title, w) for w in whitelist):
         return False, "title matches no keyword", flags
 
     if prefs.locations and job.location:

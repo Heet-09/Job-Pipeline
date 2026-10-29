@@ -42,3 +42,15 @@ def fetch_jd(url: str, snippet: str | None, http_get: HttpGet, browser_get: Http
     if status >= 400 or LOGIN_WALL.search(text) or len(text) < MIN_TEXT:
         return (snippet or ""), True
     return text, False
+
+
+def default_http_get(url: str) -> tuple[int, str]:
+    """Plain urllib GET (fine for static pages). LinkedIn/Naukri usually answer 4xx or a login wall -> JD_PARTIAL."""
+    import urllib.error
+    import urllib.request
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return r.status, r.read().decode("utf-8", errors="replace")
+    except urllib.error.HTTPError as e:
+        return e.code, ""

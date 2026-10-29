@@ -23,6 +23,21 @@ tests/         210 automated tests, fixtures/emails/*.eml, forms.py (local dummy
 scripts/       make_golden.py  apply_results.py  build_report.py
 ```
 
+## Where jobs come from (updated)
+
+Jobs are collected by **scraping Naukri job links** with `naukri_scraper.py`'s logic (moved to `f1_discovery/naukri_scrape.py`; the original `naukri_scraper.py` is now a thin wrapper with the same command line). The Gmail alert-email path (`run_discovery`) is still in the code but needs a Gmail client that does not exist yet.
+
+```bash
+# 1. put Naukri job links in an Excel file with a 'link' column (like Jobs.xlsx)
+# 2. edit config/search_prefs.yaml (keywords, experience, locations, max age)
+python -m jobagent.cli collect-naukri Jobs.xlsx --max-age-days 7   # opens Chrome, scrapes, filters, de-dupes, saves to data/jobagent.db
+python -m jobagent.cli score --profile data/profile.json            # extract + score (rule-based; add --llm for the model)
+python -m jobagent.cli digest                                       # Apply / Maybe list
+```
+- Each scraped job is stored with its **full description**, so scoring does not fetch the page again.
+- The same filters, de-duplication and alerts apply as for email jobs (a job seen in both places is one row).
+- New files: `naukri_scrape.py`, `scraper_source.py`; changed: `f1_discovery/run.py` (shared `Ingest` + `run_scraper_discovery`), `prefilter.py` (wider default keywords, 4+ letter keywords match longer words), `f2_scoring/run.py` (uses stored JD), `cli.py` (`collect-naukri`, `score`, `digest`), `config/search_prefs.yaml` (broad starter prefs).
+
 ## How each feature is implemented
 
 ### 1. Profile

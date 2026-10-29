@@ -26,7 +26,10 @@ class ScoringSummary:
 
 def process_job(db: Database, job, profile: Profile, http_get: HttpGet, llm: LLMClient | None, settings: Settings,
                 sleep=time.sleep) -> str:
-    text, partial = fetch_jd(job["apply_url"] or job["canonical_url"], job["snippet"], http_get, sleep=sleep)
+    if job["jd_raw"] and len(job["jd_raw"]) >= 200:  # the scraper already stored the full JD: no second fetch
+        text, partial = job["jd_raw"], False
+    else:
+        text, partial = fetch_jd(job["apply_url"] or job["canonical_url"], job["snippet"], http_get, sleep=sleep)
     if partial:
         queue.advance(db, job["id"], st.JD_PARTIAL, note="JD page blocked or empty; using email snippet")
     jd = extract_jd(text, job["title"], job["company"], job["location"], llm, job["id"])

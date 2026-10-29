@@ -1,5 +1,7 @@
-keywords: [GenAI, LLM, Agent]
-exp_min: 1
-exp_max: 4
-locations: [Mumbai]
-max_age_days: 3
+# Edit this file: what you want to find. Used by `jobagent collect-naukri`.
+# A job is kept if its TITLE contains any keyword (4+ letter keywords also match longer words: Agent -> Agentic).
+keywords: [AI, Artificial Intelligence, GenAI, Generative, LLM, Agent, Machine Learning, Deep Learning, Data Scientist, NLP, Python]
+exp_min: 0            # your experience range, in years
+exp_max: 50
+locations: []         # [] = any location; e.g. [Mumbai, Pune] keeps those (and remote)
+max_age_days: 3       # drop jobs posted more than this many days ago

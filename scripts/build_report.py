@@ -66,11 +66,11 @@ A test case is marked Pass only when at least one automated test carries its id 
 All {len(rows)} test cases pass, but the tests run against **stand-ins**, not live systems:
 
 1. **No real LLM was called.** There is no `GROQ_API_KEY` here. Every LLM step is a scripted fake, so the tests prove our code (validation, guards, retries, recomputing totals, saving) works. They do **not** prove that a real model extracts, scores, tailors or answers well. Where a test case is about model quality (TC-001 dates, TC-030/031/033 scoring, TC-033 consistency) the test uses either a scripted LLM or the deterministic **rule-based** scorer/extractor that ships with the code.
-2. **No real Gmail, LinkedIn, Naukri or employer website was touched.** Alert emails are synthetic `.eml` files that imitate the structure of real alerts (they are *not* captured real emails, so real-world template drift is untested). Gmail is a fake `MailSource`.
+2. **The 115 test cases never touched a real job site or mailbox.** Alert-email tests use synthetic `.eml` files (not captured real emails) and a fake `MailSource`. The Naukri-scraper source was checked separately (see "Naukri scraper as the job source" below) on the extracted fields, on your 160 real scraped rows, and live on 3 real Naukri links.
 3. **Form filling and submit ran for real, but only on local dummy forms** (real headless Chromium, no real ATS). Greenhouse/Lever/Workday behave differently; expect to adjust.
 4. **Time and delays use a fake clock** (e.g. the 45-120 s delay between submits is asserted without actually waiting).
 5. **Golden set (TC-100) is hand-written** (20 forms, 189 fields, wording modelled on common ATS forms). First measured accuracy was **96.8% (183/189)**; I then fixed the 6 misses in the mapper rules, giving **100%** on this same set. That 100% is therefore fitted to this set, not a held-out result.
-6. **Not built** (the logic exists and is tested, but the real connector does not): the Gmail API client (OAuth), the scheduler/cron runner, Telegram/email delivery, and the Streamlit UI (the review screen is a generated HTML page). Until the Gmail client exists, discovery and status tracking cannot run against a real mailbox.
+6. **Not built** (the logic exists and is tested, but the real connector does not): the Gmail API client (OAuth), the scheduler/cron runner, Telegram/email delivery, and the Streamlit UI (the review screen is a generated HTML page). Jobs now come from the **Naukri scraper**, so discovery works without Gmail; **status tracking (STA) still needs the Gmail client** to read real replies.
 
 ## Results by module
 

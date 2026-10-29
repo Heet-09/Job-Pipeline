@@ -110,6 +110,7 @@ class JobRaw(BaseModel):
     posted_at: datetime | None = None
     snippet: str | None = None
     exp_text: str | None = None
+    jd_text: str | None = None   # full job description when the source already has it (scraper)
 
 
 class JDExtract(BaseModel):

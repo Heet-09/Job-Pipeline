@@ -1,4 +1,5 @@
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -6,8 +7,16 @@ from jobagent.flows.f0_profile.builder import ProfileBuildError, build_profile
 from jobagent.flows.f0_profile.extractor import LangChainExtractor
 from jobagent.flows.f0_profile.loader import DEFAULT_PROFILE_PATH
 
+DEFAULT_DB = Path("data/jobagent.db")
+DEFAULT_PREFS = Path("config/search_prefs.yaml")
 
-def main(argv=None) -> int:
+
+class PrintChannel:
+    def send(self, subject: str, body: str) -> None:
+        print(f"=== {subject} ===\n{body}")
+
+
+def _build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="jobagent")
     sub = ap.add_subparsers(dest="cmd", required=True)
     bp = sub.add_parser("build-profile", help="Build data/profile.json from a resume PDF")
@@ -21,8 +30,24 @@ def main(argv=None) -> int:
     ss.add_argument("field")
     ss.add_argument("value")
     ss.add_argument("--profile", type=Path, default=DEFAULT_PROFILE_PATH)
-    args = ap.parse_args(argv)
 
+    cn = sub.add_parser("collect-naukri", help="Scrape Naukri job links from an Excel file and add them to the job database")
+    cn.add_argument("links_xlsx", type=Path, help="Excel with a 'link' column (like Jobs.xlsx)")
+    cn.add_argument("--db", type=Path, default=DEFAULT_DB)
+    cn.add_argument("--prefs", type=Path, default=DEFAULT_PREFS)
+    cn.add_argument("--max-age-days", type=int, help="override the prefs value (jobs older than this are dropped)")
+    cn.add_argument("--headless", action="store_true", help="does not work against Naukri (it blocks headless browsers)")
+    cn.add_argument("--dry-run", action="store_true", help="scrape and filter, but write nothing to the database")
+    sc = sub.add_parser("score", help="Extract + score every DISCOVERED job")
+    sc.add_argument("--db", type=Path, default=DEFAULT_DB)
+    sc.add_argument("--profile", type=Path, default=DEFAULT_PROFILE_PATH)
+    sc.add_argument("--llm", action="store_true", help="use the LLM (needs GROQ_API_KEY); default is the rule-based scorer")
+    dg = sub.add_parser("digest", help="Print the daily digest of new Apply/Maybe jobs")
+    dg.add_argument("--db", type=Path, default=DEFAULT_DB)
+    return ap
+
+
+def _cmd_profile(args) -> int:
     if args.cmd == "check-profile":
         from jobagent.flows.f0_profile.loader import load_profile
         from jobagent.flows.f0_profile.sensitive import MissingSensitiveError, startup_check
@@ -34,7 +59,6 @@ def main(argv=None) -> int:
         print("\n".join(f"WARNING: {m}" for m in msgs) or "profile ok: all sensitive fields are set")
         return 0
     if args.cmd == "set-sensitive":
-        import json
         from jobagent.flows.f0_profile.sensitive import set_sensitive
         try:
             raw = json.loads(args.value)
@@ -47,7 +71,6 @@ def main(argv=None) -> int:
             return 1
         print(f"saved sensitive.{args.field}")
         return 0
-
     try:
         result = build_profile(args.resume_pdf, LangChainExtractor(), args.out, dry_run=args.dry_run)
     except ProfileBuildError as e:
@@ -63,6 +86,57 @@ def main(argv=None) -> int:
           f"{len(p.projects)} projects, {len(p.skills.core)} core skills, {len(p.education)} education")
     print("Fill the 'sensitive' section (CTC, notice period, ...) by hand - it is never auto-filled.")
     return 0
+
+
+def _cmd_jobs(args) -> int:
+    from jobagent.core.config import load_settings
+    from jobagent.core.db import Database
+    from jobagent.core.notify import LogNotifier
+    from jobagent.core.logging import setup_logging
+
+    setup_logging()
+    args.db.parent.mkdir(parents=True, exist_ok=True)
+    if args.cmd == "collect-naukri":
+        from jobagent.flows.f0_profile.prefs import SearchPrefs, load_prefs
+        from jobagent.flows.f1_discovery.run import run_scraper_discovery
+        from jobagent.flows.f1_discovery.scraper_source import NaukriScraperSource
+        prefs = load_prefs(args.prefs) if args.prefs.exists() else SearchPrefs()
+        if args.max_age_days is not None:
+            prefs.max_age_days = args.max_age_days
+        db = Database(args.db, dry_run=args.dry_run)
+        source = NaukriScraperSource.from_excel(args.links_xlsx, headless=args.headless,
+                                                on_progress=lambda i, n, url: print(f"[{i}/{n}] {url[:90]}", flush=True))
+        res = run_scraper_discovery(db, source, prefs, LogNotifier())
+        print(f"\nscraped {res.scraped}: {res.parsed} real jobs, {res.expired} expired, {res.scrape_errors} errors\n"
+              f"{'would add' if args.dry_run else 'added'} {res.inserted} new jobs; "
+              f"{res.rejected} filtered by your preferences, {res.duplicates} duplicates")
+        for r in res.reject_reasons[:10]:
+            print("  filtered:", r)
+        return 0 if res.scrape_errors < max(res.scraped, 1) else 1
+    db = Database(args.db)
+    if args.cmd == "score":
+        from jobagent.flows.f0_profile.loader import load_profile
+        from jobagent.flows.f2_scoring.fetcher import default_http_get
+        from jobagent.flows.f2_scoring.run import run_scoring
+        llm = None
+        if args.llm:
+            from jobagent.core.llm import LLMClient, langchain_backend
+            llm = LLMClient(langchain_backend(), db=db)
+        s = run_scoring(db, load_profile(args.profile), default_http_get, llm, load_settings())
+        print(f"scored {s.processed}, failed {s.failed}, extraction failed {s.extraction_failed}")
+        for r in db.query("SELECT status, COUNT(*) n FROM jobs GROUP BY status"):
+            print(f"  {r['status']}: {r['n']}")
+        return 0
+    from jobagent.flows.f2_scoring.digest import send_digest
+    send_digest(db, PrintChannel())
+    return 0
+
+
+def main(argv=None) -> int:
+    args = _build_parser().parse_args(argv)
+    if args.cmd in ("collect-naukri", "score", "digest"):
+        return _cmd_jobs(args)
+    return _cmd_profile(args)
 
 
 if __name__ == "__main__":

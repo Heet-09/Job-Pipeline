@@ -11,7 +11,7 @@ Date: 2026-10-29 | Branch: `feature/prf-01-resume-to-profile` | Python 3.13, pyt
 | **Pass** | **115** |
 | Fail | 0 |
 | Not Run | 0 |
-| Automated tests executed | 210 (0 failed), 24 s |
+| Automated tests executed | 234 (0 failed), 44 s |
 
 Per-test-case Status, Actual Result and Remarks are written into `Job_Pipeline_Agent_TestCases.xlsx` (regenerate with `python scripts/apply_results.py junit.xml`).
 A test case is marked Pass only when at least one automated test carries its id (`test_tcNNN_...`) and every such test passed.
@@ -21,11 +21,11 @@ A test case is marked Pass only when at least one automated test carries its id 
 All 115 test cases pass, but the tests run against **stand-ins**, not live systems:
 
 1. **No real LLM was called.** There is no `GROQ_API_KEY` here. Every LLM step is a scripted fake, so the tests prove our code (validation, guards, retries, recomputing totals, saving) works. They do **not** prove that a real model extracts, scores, tailors or answers well. Where a test case is about model quality (TC-001 dates, TC-030/031/033 scoring, TC-033 consistency) the test uses either a scripted LLM or the deterministic **rule-based** scorer/extractor that ships with the code.
-2. **No real Gmail, LinkedIn, Naukri or employer website was touched.** Alert emails are synthetic `.eml` files that imitate the structure of real alerts (they are *not* captured real emails, so real-world template drift is untested). Gmail is a fake `MailSource`.
+2. **The 115 test cases never touched a real job site or mailbox.** Alert-email tests use synthetic `.eml` files (not captured real emails) and a fake `MailSource`. The Naukri-scraper source was checked separately (see "Naukri scraper as the job source" below) on the extracted fields, on your 160 real scraped rows, and live on 3 real Naukri links.
 3. **Form filling and submit ran for real, but only on local dummy forms** (real headless Chromium, no real ATS). Greenhouse/Lever/Workday behave differently; expect to adjust.
 4. **Time and delays use a fake clock** (e.g. the 45-120 s delay between submits is asserted without actually waiting).
 5. **Golden set (TC-100) is hand-written** (20 forms, 189 fields, wording modelled on common ATS forms). First measured accuracy was **96.8% (183/189)**; I then fixed the 6 misses in the mapper rules, giving **100%** on this same set. That 100% is therefore fitted to this set, not a held-out result.
-6. **Not built** (the logic exists and is tested, but the real connector does not): the Gmail API client (OAuth), the scheduler/cron runner, Telegram/email delivery, and the Streamlit UI (the review screen is a generated HTML page). Until the Gmail client exists, discovery and status tracking cannot run against a real mailbox.
+6. **Not built** (the logic exists and is tested, but the real connector does not): the Gmail API client (OAuth), the scheduler/cron runner, Telegram/email delivery, and the Streamlit UI (the review screen is a generated HTML page). Jobs now come from the **Naukri scraper**, so discovery works without Gmail; **status tracking (STA) still needs the Gmail client** to read real replies.
 
 ## Results by module
 
@@ -143,6 +143,20 @@ All 115 test cases pass, but the tests run against **stand-ins**, not live syste
 | PLT-02 | Dry-run mode | TC-113 | **Pass** |
 | PLT-03 | Rate limit handling | TC-114 | **Pass** |
 | PLT-04 | Valid status transitions | TC-115 | **Pass** |
+
+## Naukri scraper as the job source (added after the 115 test cases)
+
+Jobs are collected by scraping the Naukri links in an Excel file (like `Jobs.xlsx`) with the existing scraper logic, instead of reading Gmail alerts.
+
+| Check | Result |
+|---|---|
+| Field extraction on a Naukri-shaped page (real Chromium) | title, company, experience, salary, location, posted, skills, apply-site all extracted |
+| Your 160 real scraped rows (`Jobs_output.xlsx`): 139 `ok` | all 139 convert to jobs; with a 365-day age limit 96 inserted, 14 duplicates, 29 filtered by title keywords; all 96 scored without any re-fetch (4 Apply, 57 Maybe, 35 Reject against the **sample** profile, so those buckets say nothing about you) |
+| Live run of the real CLI on 3 real Naukri links | 3 scraped, 2 added, 1 filtered (before adding "Artificial Intelligence" to the keywords), 2 scored, digest printed |
+| Same job from an alert email and the scraper | one row |
+| All links fail / browser crash / zero new jobs | `source_failed` / `zero_jobs` alert, no crash |
+
+Found while doing this: the default title keywords rejected "Artificial Intelligence Engineer" and "Data Scientist", and whole-word matching rejected "Agentic" for the keyword "Agent". Fixed (4+ letter keywords now match longer words; the blacklist stays whole-word so "Salesforce" is not caught by "sales"). Limits: Naukri blocks headless browsers, so a visible Chrome window opens; most links in `Jobs.xlsx` are older than 3 days and are dropped by the age rule unless you pass `--max-age-days`; scraping may be against Naukri's terms of service.
 
 ## Problems the tests found (and that were fixed)
 

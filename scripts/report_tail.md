@@ -1,3 +1,17 @@
+## Naukri scraper as the job source (added after the 115 test cases)
+
+Jobs are collected by scraping the Naukri links in an Excel file (like `Jobs.xlsx`) with the existing scraper logic, instead of reading Gmail alerts.
+
+| Check | Result |
+|---|---|
+| Field extraction on a Naukri-shaped page (real Chromium) | title, company, experience, salary, location, posted, skills, apply-site all extracted |
+| Your 160 real scraped rows (`Jobs_output.xlsx`): 139 `ok` | all 139 convert to jobs; with a 365-day age limit 96 inserted, 14 duplicates, 29 filtered by title keywords; all 96 scored without any re-fetch (4 Apply, 57 Maybe, 35 Reject against the **sample** profile, so those buckets say nothing about you) |
+| Live run of the real CLI on 3 real Naukri links | 3 scraped, 2 added, 1 filtered (before adding "Artificial Intelligence" to the keywords), 2 scored, digest printed |
+| Same job from an alert email and the scraper | one row |
+| All links fail / browser crash / zero new jobs | `source_failed` / `zero_jobs` alert, no crash |
+
+Found while doing this: the default title keywords rejected "Artificial Intelligence Engineer" and "Data Scientist", and whole-word matching rejected "Agentic" for the keyword "Agent". Fixed (4+ letter keywords now match longer words; the blacklist stays whole-word so "Salesforce" is not caught by "sales"). Limits: Naukri blocks headless browsers, so a visible Chrome window opens; most links in `Jobs.xlsx` are older than 3 days and are dropped by the age rule unless you pass `--max-age-days`; scraping may be against Naukri's terms of service.
+
 ## Problems the tests found (and that were fixed)
 
 | Where | Problem | Found by | Fix |
