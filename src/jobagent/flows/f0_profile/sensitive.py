@@ -46,5 +46,11 @@ def set_sensitive(path: Path = DEFAULT_PROFILE_PATH, **values) -> Profile:
     return profile
 
 
+def register_profile_secrets(profile: Profile) -> None:
+    """Make the logger mask this profile's sensitive values wherever they might appear."""
+    for v in sensitive_values(profile):
+        register_secret(v)
+
+
 def sensitive_values(profile: Profile) -> list:
     return [v for v in profile.sensitive.model_dump().values() if v is not None]

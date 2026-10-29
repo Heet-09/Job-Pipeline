@@ -1,0 +1,106 @@
+{
+ "form": "startup_2",
+ "snapshot_fields": [
+  {
+   "ref": "text:First Name:0",
+   "label": "First Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Last Name:0",
+   "label": "Last Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Phone:0",
+   "label": "Phone",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Personal website or blog:0",
+   "label": "Personal website or blog",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:LinkedIn Profile URL:0",
+   "label": "LinkedIn Profile URL",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:CV:0",
+   "label": "CV",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:Describe a time you debugged a hard production issue.:0",
+   "label": "Describe a time you debugged a hard production issue.",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Earliest joining date:0",
+   "label": "Earliest joining date",
+   "type": "text",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:First Name:0": {
+   "category": "personal",
+   "profile_key": "personal.first_name"
+  },
+  "text:Last Name:0": {
+   "category": "personal",
+   "profile_key": "personal.last_name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Phone:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "text:Personal website or blog:0": {
+   "category": "personal",
+   "profile_key": "personal.links.portfolio"
+  },
+  "text:LinkedIn Profile URL:0": {
+   "category": "personal",
+   "profile_key": "personal.links.linkedin"
+  },
+  "file:CV:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "textarea:Describe a time you debugged a hard production issue.:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "text:Earliest joining date:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.notice_period_days"
+  }
+ }
+}

@@ -1,0 +1,120 @@
+{
+ "form": "greenhouse_2",
+ "snapshot_fields": [
+  {
+   "ref": "text:First Name:0",
+   "label": "First Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Last Name:0",
+   "label": "Last Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Phone:0",
+   "label": "Phone",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Location (City):0",
+   "label": "Location (City)",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:LinkedIn URL:0",
+   "label": "LinkedIn URL",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:Why do you want to work at this company?:0",
+   "label": "Why do you want to work at this company?",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:What is your expected salary?:0",
+   "label": "What is your expected salary?",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "select:Are you open to relocation?:0",
+   "label": "Are you open to relocation?",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  }
+ ],
+ "expected": {
+  "text:First Name:0": {
+   "category": "personal",
+   "profile_key": "personal.first_name"
+  },
+  "text:Last Name:0": {
+   "category": "personal",
+   "profile_key": "personal.last_name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Phone:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "text:Location (City):0": {
+   "category": "personal",
+   "profile_key": "personal.location"
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "text:LinkedIn URL:0": {
+   "category": "personal",
+   "profile_key": "personal.links.linkedin"
+  },
+  "textarea:Why do you want to work at this company?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "text:What is your expected salary?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.expected_ctc"
+  },
+  "select:Are you open to relocation?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.relocation"
+  }
+ }
+}

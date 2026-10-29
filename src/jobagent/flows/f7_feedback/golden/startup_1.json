@@ -1,0 +1,95 @@
+{
+ "form": "startup_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:Your name:0",
+   "label": "Your name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Contact number:0",
+   "label": "Contact number",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Where are you based?:0",
+   "label": "Where are you based?",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:What excites you about agentic AI?:0",
+   "label": "What excites you about agentic AI?",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Link to GitHub or portfolio:0",
+   "label": "Link to GitHub or portfolio",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:Anything else we should know?:0",
+   "label": "Anything else we should know?",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:Your name:0": {
+   "category": "personal",
+   "profile_key": "personal.name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Contact number:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "text:Where are you based?:0": {
+   "category": "personal",
+   "profile_key": "personal.location"
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "textarea:What excites you about agentic AI?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "text:Link to GitHub or portfolio:0": {
+   "category": "personal",
+   "profile_key": "personal.links.github"
+  },
+  "textarea:Anything else we should know?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  }
+ }
+}

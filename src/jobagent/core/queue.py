@@ -12,6 +12,13 @@ def claim(db: Database, status_from: str, worker: str, lease_min: int = 15, extr
     """Atomically lock the oldest job in status_from. Stale locks (older than the lease) are reclaimed."""
     now = db.now()
     stale = (now - timedelta(minutes=lease_min)).isoformat(timespec="seconds")
+    if db.dry_run:  # read-only: pick the oldest eligible job that this dry run has not already looked at
+        skip = ",".join(str(i) for i in db.dry_claimed) or "-1"
+        row = db.one(f"SELECT * FROM jobs WHERE status=? AND (locked_by IS NULL OR locked_at < ?) AND id NOT IN ({skip}) AND " + extra_sql +
+                     " ORDER BY discovered_at, id LIMIT 1", (status_from, stale, *extra_params))
+        if row:
+            db.dry_claimed.add(row["id"])
+        return row
     cur = db.write(
         """UPDATE jobs SET locked_by=?, locked_at=? WHERE id = (
              SELECT id FROM jobs WHERE status=? AND (locked_by IS NULL OR locked_at < ?) AND """ + extra_sql + """
@@ -25,13 +32,16 @@ def advance(db: Database, job_id: int, new_status: str, note: str | None = None,
     row = db.one("SELECT status FROM jobs WHERE id=?", (job_id,))
     if row is None:
         raise KeyError(f"job {job_id} not found")
-    st.check_transition(row["status"], new_status)  # raises before anything is written
+    current = db.dry_status.get(job_id, row["status"]) if db.dry_run else row["status"]
+    st.check_transition(current, new_status)  # raises before anything is written
+    if db.dry_run:
+        db.dry_status[job_id] = new_status
     now = db.now_iso()
     db.write("UPDATE jobs SET status=?, status_updated_at=?, locked_by=NULL, locked_at=NULL, last_error=COALESCE(?, last_error) WHERE id=?",
              (new_status, now, error, job_id))
     db.write("INSERT INTO job_history(job_id, from_status, to_status, note, at) VALUES (?,?,?,?,?)",
-             (job_id, row["status"], new_status, note, now))
-    log.info("job %s: %s -> %s %s", job_id, row["status"], new_status, note or "")
+             (job_id, current, new_status, note, now))
+    log.info("job %s: %s -> %s %s", job_id, current, new_status, note or "")
 
 
 def release(db: Database, job_id: int) -> None:
@@ -46,5 +56,6 @@ def fail(db: Database, job_id: int, error: str, max_attempts: int = 3) -> str:
     if attempts >= max_attempts:
         advance(db, job_id, st.FAILED, note=f"failed after {attempts} attempts", error=error[:500])
         return st.FAILED
-    release(db, job_id)
+    # keep the job locked for one lease so a failing job is retried on the NEXT scheduled run, not in a tight loop
+    db.write("UPDATE jobs SET locked_by='retry-wait', locked_at=? WHERE id=?", (db.now_iso(), job_id))
     return row["status"]

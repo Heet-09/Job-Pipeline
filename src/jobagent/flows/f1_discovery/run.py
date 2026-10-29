@@ -67,13 +67,16 @@ def run_discovery(db: Database, mail: MailSource, prefs: SearchPrefs, notifier: 
                 continue
             seen_keys.add(key)
             seen_urls.add(url)
-            db.write(
+            cur = db.write(
                 "INSERT INTO jobs(dedupe_key, canonical_url, source, title, company, location, posted_at, discovered_at,"
                 " snippet, apply_url, status, status_updated_at, flags) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 (key, url, job.source, job.title, job.company, job.location,
                  job.posted_at.isoformat(timespec="seconds") if job.posted_at else None, db.now_iso(),
                  job.snippet, job.url, "DISCOVERED", db.now_iso(), ",".join(flags)))
             res.inserted += 1
+            if cur.lastrowid:
+                db.write("INSERT INTO job_history(job_id, from_status, to_status, note, at) VALUES (?,?,?,?,?)",
+                         (cur.lastrowid, None, "DISCOVERED", f"from {job.source}", db.now_iso()))
         db.write("INSERT OR IGNORE INTO processed_emails(email_id, kind, processed_at) VALUES (?,?,?)",
                  (email.id, "job_alert", db.now_iso()))
 

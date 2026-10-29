@@ -1,0 +1,109 @@
+{
+ "form": "custom_heavy_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:First Name:0",
+   "label": "First Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Last Name:0",
+   "label": "Last Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:Why do you want to join us?:0",
+   "label": "Why do you want to join us?",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:What is your greatest professional achievement?:0",
+   "label": "What is your greatest professional achievement?",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:Which LLM frameworks have you used?:0",
+   "label": "Which LLM frameworks have you used?",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:Describe your ideal team.:0",
+   "label": "Describe your ideal team.",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Would you like to receive job alerts?:0",
+   "label": "Would you like to receive job alerts?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:First Name:0": {
+   "category": "personal",
+   "profile_key": "personal.first_name"
+  },
+  "text:Last Name:0": {
+   "category": "personal",
+   "profile_key": "personal.last_name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "textarea:Why do you want to join us?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "textarea:What is your greatest professional achievement?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "textarea:Which LLM frameworks have you used?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "textarea:Describe your ideal team.:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "radio:Would you like to receive job alerts?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  }
+ }
+}

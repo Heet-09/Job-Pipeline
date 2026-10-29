@@ -1,0 +1,203 @@
+{
+ "form": "greenhouse_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:First Name:0",
+   "label": "First Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Last Name:0",
+   "label": "Last Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Phone:0",
+   "label": "Phone",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume/CV:0",
+   "label": "Resume/CV",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Cover Letter:0",
+   "label": "Cover Letter",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:LinkedIn Profile:0",
+   "label": "LinkedIn Profile",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Website:0",
+   "label": "Website",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:GitHub:0",
+   "label": "GitHub",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:How did you hear about this job?:0",
+   "label": "How did you hear about this job?",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Are you legally authorized to work in the country in which this job is located?:0",
+   "label": "Are you legally authorized to work in the country in which this job is located?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "radio:Will you now or in the future require sponsorship for employment visa status?:0",
+   "label": "Will you now or in the future require sponsorship for employment visa status?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "select:Gender:0",
+   "label": "Gender",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Male",
+    "Female",
+    "Decline"
+   ]
+  },
+  {
+   "ref": "select:Race:0",
+   "label": "Race",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Asian",
+    "White",
+    "Decline"
+   ]
+  },
+  {
+   "ref": "select:Veteran Status:0",
+   "label": "Veteran Status",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "select:Disability Status:0",
+   "label": "Disability Status",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  }
+ ],
+ "expected": {
+  "text:First Name:0": {
+   "category": "personal",
+   "profile_key": "personal.first_name"
+  },
+  "text:Last Name:0": {
+   "category": "personal",
+   "profile_key": "personal.last_name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Phone:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "file:Resume/CV:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "file:Cover Letter:0": {
+   "category": "skip",
+   "profile_key": null
+  },
+  "text:LinkedIn Profile:0": {
+   "category": "personal",
+   "profile_key": "personal.links.linkedin"
+  },
+  "text:Website:0": {
+   "category": "personal",
+   "profile_key": "personal.links.portfolio"
+  },
+  "text:GitHub:0": {
+   "category": "personal",
+   "profile_key": "personal.links.github"
+  },
+  "text:How did you hear about this job?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "radio:Are you legally authorized to work in the country in which this job is located?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.work_auth"
+  },
+  "radio:Will you now or in the future require sponsorship for employment visa status?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.work_auth"
+  },
+  "select:Gender:0": {
+   "category": "skip",
+   "profile_key": null
+  },
+  "select:Race:0": {
+   "category": "skip",
+   "profile_key": null
+  },
+  "select:Veteran Status:0": {
+   "category": "skip",
+   "profile_key": null
+  },
+  "select:Disability Status:0": {
+   "category": "skip",
+   "profile_key": null
+  }
+ }
+}

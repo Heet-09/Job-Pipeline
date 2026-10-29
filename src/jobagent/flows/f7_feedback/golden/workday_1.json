@@ -1,0 +1,127 @@
+{
+ "form": "workday_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:Legal First Name:0",
+   "label": "Legal First Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Legal Last Name:0",
+   "label": "Legal Last Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email Address:0",
+   "label": "Email Address",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Phone Number:0",
+   "label": "Phone Number",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "select:Phone Device Type:0",
+   "label": "Phone Device Type",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Mobile",
+    "Home",
+    "Work"
+   ]
+  },
+  {
+   "ref": "select:Country Phone Code:0",
+   "label": "Country Phone Code",
+   "type": "select",
+   "required": true,
+   "options": [
+    "India (+91)",
+    "United States (+1)"
+   ]
+  },
+  {
+   "ref": "text:City:0",
+   "label": "City",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:LinkedIn:0",
+   "label": "LinkedIn",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Are you legally authorized to work in this country?:0",
+   "label": "Are you legally authorized to work in this country?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  }
+ ],
+ "expected": {
+  "text:Legal First Name:0": {
+   "category": "personal",
+   "profile_key": "personal.first_name"
+  },
+  "text:Legal Last Name:0": {
+   "category": "personal",
+   "profile_key": "personal.last_name"
+  },
+  "text:Email Address:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Phone Number:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "select:Phone Device Type:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "select:Country Phone Code:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "text:City:0": {
+   "category": "personal",
+   "profile_key": "personal.location"
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "text:LinkedIn:0": {
+   "category": "personal",
+   "profile_key": "personal.links.linkedin"
+  },
+  "radio:Are you legally authorized to work in this country?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.work_auth"
+  }
+ }
+}

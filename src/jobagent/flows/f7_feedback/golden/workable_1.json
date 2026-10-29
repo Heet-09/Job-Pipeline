@@ -1,0 +1,106 @@
+{
+ "form": "workable_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:First name:0",
+   "label": "First name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Last name:0",
+   "label": "Last name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Phone:0",
+   "label": "Phone",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:Cover letter:0",
+   "label": "Cover letter",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Years of experience:0",
+   "label": "Years of experience",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Expected salary:0",
+   "label": "Expected salary",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Notice period:0",
+   "label": "Notice period",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:First name:0": {
+   "category": "personal",
+   "profile_key": "personal.first_name"
+  },
+  "text:Last name:0": {
+   "category": "personal",
+   "profile_key": "personal.last_name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Phone:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "textarea:Cover letter:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "text:Years of experience:0": {
+   "category": "experience",
+   "profile_key": "experience.total_years"
+  },
+  "text:Expected salary:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.expected_ctc"
+  },
+  "text:Notice period:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.notice_period_days"
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  }
+ }
+}

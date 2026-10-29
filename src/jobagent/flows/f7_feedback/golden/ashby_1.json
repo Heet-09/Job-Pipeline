@@ -1,0 +1,109 @@
+{
+ "form": "ashby_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:Name:0",
+   "label": "Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Phone Number:0",
+   "label": "Phone Number",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:LinkedIn:0",
+   "label": "LinkedIn",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:What is your expected salary?:0",
+   "label": "What is your expected salary?",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:When can you start?:0",
+   "label": "When can you start?",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Are you open to relocation?:0",
+   "label": "Are you open to relocation?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "textarea:Why are you interested in this role?:0",
+   "label": "Why are you interested in this role?",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:Name:0": {
+   "category": "personal",
+   "profile_key": "personal.name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Phone Number:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "text:LinkedIn:0": {
+   "category": "personal",
+   "profile_key": "personal.links.linkedin"
+  },
+  "text:What is your expected salary?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.expected_ctc"
+  },
+  "text:When can you start?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.notice_period_days"
+  },
+  "radio:Are you open to relocation?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.relocation"
+  },
+  "textarea:Why are you interested in this role?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  }
+ }
+}

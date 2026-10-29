@@ -83,6 +83,8 @@ def fill_application(db: Database, job_id: int, profile: Profile, resume_path: s
                      jd: JDExtract | None = None, shots_dir: Path | None = None, headless: bool = True,
                      page=None, user_data_dir: Path | None = None, map_with_llm: bool = False) -> FillResult:
     job = db.one("SELECT * FROM jobs WHERE id=?", (job_id,))
+    if job["status"] not in (st.TAILORED, st.NEEDS_HUMAN):  # re-running a finished step is a no-op, never a duplicate
+        return FillResult(job["status"], problems=[f"nothing to fill: job is already {job['status']}"])
     bank = bank or AnswerBank(db, min_sim=settings.bank_min_sim)
     ctx = ResolveContext(profile=profile, now=db.now(), bank=bank, llm=llm, jd=jd, resume_path=resume_path, job_id=job_id)
     rows: list[dict] = []

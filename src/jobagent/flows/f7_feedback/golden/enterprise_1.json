@@ -1,0 +1,134 @@
+{
+ "form": "enterprise_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:First Name:0",
+   "label": "First Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Last Name:0",
+   "label": "Last Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email Address:0",
+   "label": "Email Address",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Telephone:0",
+   "label": "Telephone",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Current CTC:0",
+   "label": "Current CTC",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Expected CTC:0",
+   "label": "Expected CTC",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Notice Period:0",
+   "label": "Notice Period",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Do you hold a valid work permit?:0",
+   "label": "Do you hold a valid work permit?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "text:Date of birth:0",
+   "label": "Date of birth",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "select:Marital status:0",
+   "label": "Marital status",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Single",
+    "Married"
+   ]
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:First Name:0": {
+   "category": "personal",
+   "profile_key": "personal.first_name"
+  },
+  "text:Last Name:0": {
+   "category": "personal",
+   "profile_key": "personal.last_name"
+  },
+  "text:Email Address:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Telephone:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "text:Current CTC:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.current_ctc"
+  },
+  "text:Expected CTC:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.expected_ctc"
+  },
+  "text:Notice Period:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.notice_period_days"
+  },
+  "radio:Do you hold a valid work permit?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.work_auth"
+  },
+  "text:Date of birth:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "select:Marital status:0": {
+   "category": "skip",
+   "profile_key": null
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  }
+ }
+}

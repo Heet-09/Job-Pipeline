@@ -1,0 +1,102 @@
+{
+ "form": "lever_2",
+ "snapshot_fields": [
+  {
+   "ref": "text:Full name:0",
+   "label": "Full name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Phone:0",
+   "label": "Phone",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume/CV:0",
+   "label": "Resume/CV",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:What interests you about this role?:0",
+   "label": "What interests you about this role?",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:What is your notice period?:0",
+   "label": "What is your notice period?",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Do you require visa sponsorship?:0",
+   "label": "Do you require visa sponsorship?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "select:Gender identity:0",
+   "label": "Gender identity",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Woman",
+    "Man",
+    "Non-binary"
+   ]
+  }
+ ],
+ "expected": {
+  "text:Full name:0": {
+   "category": "personal",
+   "profile_key": "personal.name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Phone:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "file:Resume/CV:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "textarea:What interests you about this role?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "text:What is your notice period?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.notice_period_days"
+  },
+  "radio:Do you require visa sponsorship?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.work_auth"
+  },
+  "select:Gender identity:0": {
+   "category": "skip",
+   "profile_key": null
+  }
+ }
+}

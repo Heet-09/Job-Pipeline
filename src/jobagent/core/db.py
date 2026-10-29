@@ -84,6 +84,8 @@ class Database:
         self.dry_run = dry_run
         self.clock = clock or (lambda: datetime.now(timezone.utc).replace(tzinfo=None))
         self.skipped_writes: list[str] = []
+        self.dry_status: dict[int, str] = {}   # dry-run only: status changes that WOULD have happened
+        self.dry_claimed: set[int] = set()
         self.conn = sqlite3.connect(self.path, check_same_thread=False, isolation_level=None)
         self.conn.row_factory = sqlite3.Row
         if self.path != ":memory:":

@@ -1,0 +1,100 @@
+{
+ "form": "enterprise_2",
+ "snapshot_fields": [
+  {
+   "ref": "text:Full Name:0",
+   "label": "Full Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:WhatsApp number:0",
+   "label": "WhatsApp number",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Current city:0",
+   "label": "Current city",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Total experience:0",
+   "label": "Total experience",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "select:Caste / category:0",
+   "label": "Caste / category",
+   "type": "select",
+   "required": true,
+   "options": [
+    "General",
+    "OBC",
+    "SC",
+    "ST"
+   ]
+  },
+  {
+   "ref": "checkbox:I confirm that the information provided is true:0",
+   "label": "I confirm that the information provided is true",
+   "type": "checkbox",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:Full Name:0": {
+   "category": "personal",
+   "profile_key": "personal.name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:WhatsApp number:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "text:Current city:0": {
+   "category": "personal",
+   "profile_key": "personal.location"
+  },
+  "text:Total experience:0": {
+   "category": "experience",
+   "profile_key": "experience.total_years"
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "select:Caste / category:0": {
+   "category": "skip",
+   "profile_key": null
+  },
+  "checkbox:I confirm that the information provided is true:0": {
+   "category": "consent",
+   "profile_key": null
+  }
+ }
+}

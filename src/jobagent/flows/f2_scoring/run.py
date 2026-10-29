@@ -1,4 +1,5 @@
 """F2 worker: DISCOVERED -> (JD_PARTIAL) -> EXTRACTED -> SCORED | MAYBE | REJECTED."""
+import time
 from dataclasses import dataclass
 
 from jobagent.core import queue
@@ -23,8 +24,9 @@ class ScoringSummary:
     extraction_failed: int = 0
 
 
-def process_job(db: Database, job, profile: Profile, http_get: HttpGet, llm: LLMClient | None, settings: Settings) -> str:
-    text, partial = fetch_jd(job["apply_url"] or job["canonical_url"], job["snippet"], http_get)
+def process_job(db: Database, job, profile: Profile, http_get: HttpGet, llm: LLMClient | None, settings: Settings,
+                sleep=time.sleep) -> str:
+    text, partial = fetch_jd(job["apply_url"] or job["canonical_url"], job["snippet"], http_get, sleep=sleep)
     if partial:
         queue.advance(db, job["id"], st.JD_PARTIAL, note="JD page blocked or empty; using email snippet")
     jd = extract_jd(text, job["title"], job["company"], job["location"], llm, job["id"])
@@ -42,14 +44,14 @@ def process_job(db: Database, job, profile: Profile, http_get: HttpGet, llm: LLM
 
 
 def run_scoring(db: Database, profile: Profile, http_get: HttpGet, llm: LLMClient | None, settings: Settings,
-                worker: str = "f2", batch: int = 20) -> ScoringSummary:
+                worker: str = "f2", batch: int = 20, sleep=time.sleep) -> ScoringSummary:
     summary = ScoringSummary()
     for _ in range(batch):
         job = queue.claim(db, st.DISCOVERED, worker, settings.lease_min)
         if job is None:
             break
         try:
-            process_job(db, job, profile, http_get, llm, settings)
+            process_job(db, job, profile, http_get, llm, settings, sleep)
             summary.processed += 1
         except ExtractionFailed as e:
             queue.advance(db, job["id"], st.EXTRACTION_FAILED, error=str(e))

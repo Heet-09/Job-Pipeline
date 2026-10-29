@@ -1,5 +1,6 @@
 """Fetch a JD. Login walls / blocks fall back to the alert-email snippet and mark the job JD_PARTIAL."""
 import re
+import time
 from typing import Callable
 
 from bs4 import BeautifulSoup
@@ -17,10 +18,21 @@ def html_to_text(body: str) -> str:
     return re.sub(r"\n{2,}", "\n", soup.get_text("\n")).strip()
 
 
-def fetch_jd(url: str, snippet: str | None, http_get: HttpGet, browser_get: HttpGet | None = None) -> tuple[str, bool]:
+def _get_with_backoff(url: str, http_get: HttpGet, sleep, retries: int = 3, base_delay: float = 1.0) -> tuple[int, str]:
+    """HTTP 429 (source rate limit) -> exponential backoff and retry."""
+    for attempt in range(retries + 1):
+        status, body = http_get(url)
+        if status != 429 or attempt == retries:
+            return status, body
+        sleep(base_delay * (2 ** attempt))
+    return status, body
+
+
+def fetch_jd(url: str, snippet: str | None, http_get: HttpGet, browser_get: HttpGet | None = None,
+             sleep=time.sleep) -> tuple[str, bool]:
     """Returns (text, partial). partial=True means the text is only the email snippet."""
     try:
-        status, body = http_get(url)
+        status, body = _get_with_backoff(url, http_get, sleep)
         text = html_to_text(body) if status < 400 else ""
         if status < 400 and len(text) < 500 and browser_get:  # JS-rendered page: try the browser fallback
             status, body = browser_get(url)

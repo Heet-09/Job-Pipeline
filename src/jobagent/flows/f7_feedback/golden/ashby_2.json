@@ -1,0 +1,98 @@
+{
+ "form": "ashby_2",
+ "snapshot_fields": [
+  {
+   "ref": "text:Legal name:0",
+   "label": "Legal name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email address:0",
+   "label": "Email address",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Mobile number:0",
+   "label": "Mobile number",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Link to your GitHub:0",
+   "label": "Link to your GitHub",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:Tell us about a project you are proud of:0",
+   "label": "Tell us about a project you are proud of",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Total years of professional experience:0",
+   "label": "Total years of professional experience",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Do you have the right to work in India?:0",
+   "label": "Do you have the right to work in India?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  }
+ ],
+ "expected": {
+  "text:Legal name:0": {
+   "category": "personal",
+   "profile_key": "personal.name"
+  },
+  "text:Email address:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Mobile number:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "text:Link to your GitHub:0": {
+   "category": "personal",
+   "profile_key": "personal.links.github"
+  },
+  "textarea:Tell us about a project you are proud of:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "text:Total years of professional experience:0": {
+   "category": "experience",
+   "profile_key": "experience.total_years"
+  },
+  "radio:Do you have the right to work in India?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.work_auth"
+  }
+ }
+}

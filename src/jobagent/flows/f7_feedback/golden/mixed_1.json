@@ -1,0 +1,112 @@
+{
+ "form": "mixed_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:Name:0",
+   "label": "Name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:E-mail:0",
+   "label": "E-mail",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Cell:0",
+   "label": "Cell",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Notice period:0",
+   "label": "Notice period",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Expected compensation:0",
+   "label": "Expected compensation",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Are you eligible to work in the United States?:0",
+   "label": "Are you eligible to work in the United States?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "select:Are you willing to relocate for this role?:0",
+   "label": "Are you willing to relocate for this role?",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:What is your favourite programming language?:0",
+   "label": "What is your favourite programming language?",
+   "type": "text",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:Name:0": {
+   "category": "personal",
+   "profile_key": "personal.name"
+  },
+  "text:E-mail:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Cell:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "text:Notice period:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.notice_period_days"
+  },
+  "text:Expected compensation:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.expected_ctc"
+  },
+  "radio:Are you eligible to work in the United States?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.work_auth"
+  },
+  "select:Are you willing to relocate for this role?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.relocation"
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "text:What is your favourite programming language?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  }
+ }
+}

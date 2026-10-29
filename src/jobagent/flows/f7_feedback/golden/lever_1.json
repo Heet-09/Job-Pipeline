@@ -1,0 +1,139 @@
+{
+ "form": "lever_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:Full name:0",
+   "label": "Full name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Phone:0",
+   "label": "Phone",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Current location:0",
+   "label": "Current location",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Current company:0",
+   "label": "Current company",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:LinkedIn URL:0",
+   "label": "LinkedIn URL",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Twitter URL:0",
+   "label": "Twitter URL",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:GitHub URL:0",
+   "label": "GitHub URL",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Portfolio URL:0",
+   "label": "Portfolio URL",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume/CV:0",
+   "label": "Resume/CV",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:Additional information:0",
+   "label": "Additional information",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Pronouns:0",
+   "label": "Pronouns",
+   "type": "text",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:Full name:0": {
+   "category": "personal",
+   "profile_key": "personal.name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Phone:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "text:Current location:0": {
+   "category": "personal",
+   "profile_key": "personal.location"
+  },
+  "text:Current company:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "text:LinkedIn URL:0": {
+   "category": "personal",
+   "profile_key": "personal.links.linkedin"
+  },
+  "text:Twitter URL:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "text:GitHub URL:0": {
+   "category": "personal",
+   "profile_key": "personal.links.github"
+  },
+  "text:Portfolio URL:0": {
+   "category": "personal",
+   "profile_key": "personal.links.portfolio"
+  },
+  "file:Resume/CV:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "textarea:Additional information:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "text:Pronouns:0": {
+   "category": "skip",
+   "profile_key": null
+  }
+ }
+}

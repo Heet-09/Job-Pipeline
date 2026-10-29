@@ -1,0 +1,98 @@
+{
+ "form": "naukri_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:Current CTC (in LPA):0",
+   "label": "Current CTC (in LPA)",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Expected CTC (in LPA):0",
+   "label": "Expected CTC (in LPA)",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Notice Period (in days):0",
+   "label": "Notice Period (in days)",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Total Experience (in years):0",
+   "label": "Total Experience (in years)",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Current Location:0",
+   "label": "Current Location",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Preferred Location:0",
+   "label": "Preferred Location",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Are you willing to relocate?:0",
+   "label": "Are you willing to relocate?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:Current CTC (in LPA):0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.current_ctc"
+  },
+  "text:Expected CTC (in LPA):0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.expected_ctc"
+  },
+  "text:Notice Period (in days):0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.notice_period_days"
+  },
+  "text:Total Experience (in years):0": {
+   "category": "experience",
+   "profile_key": "experience.total_years"
+  },
+  "text:Current Location:0": {
+   "category": "personal",
+   "profile_key": "personal.location"
+  },
+  "text:Preferred Location:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "radio:Are you willing to relocate?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.relocation"
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  }
+ }
+}

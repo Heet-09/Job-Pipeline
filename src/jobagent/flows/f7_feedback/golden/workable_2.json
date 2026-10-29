@@ -1,0 +1,109 @@
+{
+ "form": "workable_2",
+ "snapshot_fields": [
+  {
+   "ref": "text:First name:0",
+   "label": "First name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Last name:0",
+   "label": "Last name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Phone:0",
+   "label": "Phone",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:What are your strengths?:0",
+   "label": "What are your strengths?",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "textarea:Describe your experience with Python.:0",
+   "label": "Describe your experience with Python.",
+   "type": "textarea",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Are you comfortable working in a hybrid setup?:0",
+   "label": "Are you comfortable working in a hybrid setup?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "checkbox:I agree to the processing of my personal data:0",
+   "label": "I agree to the processing of my personal data",
+   "type": "checkbox",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:First name:0": {
+   "category": "personal",
+   "profile_key": "personal.first_name"
+  },
+  "text:Last name:0": {
+   "category": "personal",
+   "profile_key": "personal.last_name"
+  },
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Phone:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "textarea:What are your strengths?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "textarea:Describe your experience with Python.:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "radio:Are you comfortable working in a hybrid setup?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "checkbox:I agree to the processing of my personal data:0": {
+   "category": "consent",
+   "profile_key": null
+  }
+ }
+}

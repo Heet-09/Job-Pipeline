@@ -1,0 +1,62 @@
+{
+ "form": "consent_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:Email:0",
+   "label": "Email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Phone:0",
+   "label": "Phone",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "checkbox:I agree to the Terms and Conditions:0",
+   "label": "I agree to the Terms and Conditions",
+   "type": "checkbox",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "checkbox:I consent to the processing of my data for recruitment:0",
+   "label": "I consent to the processing of my data for recruitment",
+   "type": "checkbox",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:Email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Phone:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "checkbox:I agree to the Terms and Conditions:0": {
+   "category": "consent",
+   "profile_key": null
+  },
+  "checkbox:I consent to the processing of my data for recruitment:0": {
+   "category": "consent",
+   "profile_key": null
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  }
+ }
+}

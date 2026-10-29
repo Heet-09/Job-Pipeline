@@ -1,0 +1,106 @@
+{
+ "form": "smartrecruiters_1",
+ "snapshot_fields": [
+  {
+   "ref": "text:Given name:0",
+   "label": "Given name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Family name:0",
+   "label": "Family name",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email address:0",
+   "label": "Email address",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Confirm your email:0",
+   "label": "Confirm your email",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Mobile phone number:0",
+   "label": "Mobile phone number",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:City:0",
+   "label": "City",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Resume:0",
+   "label": "Resume",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "checkbox:I acknowledge the Privacy Policy:0",
+   "label": "I acknowledge the Privacy Policy",
+   "type": "checkbox",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:How many years of relevant experience do you have?:0",
+   "label": "How many years of relevant experience do you have?",
+   "type": "text",
+   "required": true,
+   "options": []
+  }
+ ],
+ "expected": {
+  "text:Given name:0": {
+   "category": "personal",
+   "profile_key": "personal.first_name"
+  },
+  "text:Family name:0": {
+   "category": "personal",
+   "profile_key": "personal.last_name"
+  },
+  "text:Email address:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Confirm your email:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "text:Mobile phone number:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "text:City:0": {
+   "category": "personal",
+   "profile_key": "personal.location"
+  },
+  "file:Resume:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "checkbox:I acknowledge the Privacy Policy:0": {
+   "category": "consent",
+   "profile_key": null
+  },
+  "text:How many years of relevant experience do you have?:0": {
+   "category": "experience",
+   "profile_key": "experience.total_years"
+  }
+ }
+}

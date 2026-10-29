@@ -1,0 +1,102 @@
+{
+ "form": "naukri_2",
+ "snapshot_fields": [
+  {
+   "ref": "text:Current Salary:0",
+   "label": "Current Salary",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Expected Salary:0",
+   "label": "Expected Salary",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "select:How soon can you join?:0",
+   "label": "How soon can you join?",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Immediate",
+    "15 days",
+    "30 days"
+   ]
+  },
+  {
+   "ref": "text:Years of Experience:0",
+   "label": "Years of Experience",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Mobile Number:0",
+   "label": "Mobile Number",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "text:Email ID:0",
+   "label": "Email ID",
+   "type": "text",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "file:Upload CV:0",
+   "label": "Upload CV",
+   "type": "file",
+   "required": true,
+   "options": []
+  },
+  {
+   "ref": "radio:Do you have a laptop?:0",
+   "label": "Do you have a laptop?",
+   "type": "radio",
+   "required": true,
+   "options": [
+    "Yes",
+    "No"
+   ]
+  }
+ ],
+ "expected": {
+  "text:Current Salary:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.current_ctc"
+  },
+  "text:Expected Salary:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.expected_ctc"
+  },
+  "select:How soon can you join?:0": {
+   "category": "sensitive",
+   "profile_key": "sensitive.notice_period_days"
+  },
+  "text:Years of Experience:0": {
+   "category": "experience",
+   "profile_key": "experience.total_years"
+  },
+  "text:Mobile Number:0": {
+   "category": "personal",
+   "profile_key": "personal.phone"
+  },
+  "text:Email ID:0": {
+   "category": "personal",
+   "profile_key": "personal.email"
+  },
+  "file:Upload CV:0": {
+   "category": "file_resume",
+   "profile_key": null
+  },
+  "radio:Do you have a laptop?:0": {
+   "category": "custom_question",
+   "profile_key": null
+  }
+ }
+}
