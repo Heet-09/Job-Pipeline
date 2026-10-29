@@ -26,3 +26,15 @@ class MemoryNotifier:
 
     def kinds(self) -> list[str]:
         return [a["kind"] for a in self.alerts]
+
+
+class DigestChannel(Protocol):
+    def send(self, subject: str, body: str) -> None: ...
+
+
+class MemoryChannel:
+    def __init__(self):
+        self.sent: list[tuple[str, str]] = []
+
+    def send(self, subject: str, body: str) -> None:
+        self.sent.append((subject, body))

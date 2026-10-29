@@ -8,15 +8,15 @@ from jobagent.core.logging import get_logger
 log = get_logger("jobagent.queue")
 
 
-def claim(db: Database, status_from: str, worker: str, lease_min: int = 15):
+def claim(db: Database, status_from: str, worker: str, lease_min: int = 15, extra_sql: str = "1=1", extra_params: tuple = ()):
     """Atomically lock the oldest job in status_from. Stale locks (older than the lease) are reclaimed."""
     now = db.now()
     stale = (now - timedelta(minutes=lease_min)).isoformat(timespec="seconds")
     cur = db.write(
         """UPDATE jobs SET locked_by=?, locked_at=? WHERE id = (
-             SELECT id FROM jobs WHERE status=? AND (locked_by IS NULL OR locked_at < ?)
+             SELECT id FROM jobs WHERE status=? AND (locked_by IS NULL OR locked_at < ?) AND """ + extra_sql + """
              ORDER BY discovered_at, id LIMIT 1) RETURNING *""",
-        (worker, now.isoformat(timespec="seconds"), status_from, stale),
+        (worker, now.isoformat(timespec="seconds"), status_from, stale, *extra_params),
     )
     return getattr(cur, "fetchone", lambda: None)()
 

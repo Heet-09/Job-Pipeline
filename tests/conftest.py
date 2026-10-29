@@ -65,11 +65,11 @@ def make_profile(**sensitive) -> Profile:
         sensitive=Sensitive(**sensitive),
         summary="GenAI engineer with 2 years of experience building LLM agents.",
         experience=[
-            Experience(company="Acme AI Labs", role="GenAI Engineer", start="2022-01", end="present", bullets=[
+            Experience(company="Acme AI Labs", role="GenAI Engineer", start="2025-03", end="present", bullets=[
                 Bullet(id="e1b1", text="Built a LangGraph agent that automated support triage.", skills=["LangGraph"]),
                 Bullet(id="e1b2", text="Reduced latency by 40% using caching.", skills=["Redis"]),
                 Bullet(id="e1b3", text="Built LangChain retrieval pipelines serving 5000 users.", skills=["LangChain"])]),
-            Experience(company="Beta Systems", role="Software Engineer", start="2020-06", end="2021-12", bullets=[
+            Experience(company="Beta Systems", role="Software Engineer", start="2024-06", end="2025-02", bullets=[
                 Bullet(id="e2b1", text="Developed REST APIs in Python and FastAPI.", skills=["Python", "FastAPI"])]),
         ],
         projects=[
@@ -78,7 +78,7 @@ def make_profile(**sensitive) -> Profile:
             Project(name="Sales Dashboard", bullets=[
                 Bullet(id="p2b1", text="Built an analytics dashboard in SQL.", skills=["SQL"])]),
         ],
-        skills=Skills(core=["Python", "LangGraph", "LangChain", "FastAPI", "Redis"], familiar=["SQL", "Playwright"]),
+        skills=Skills(core=["Python", "LangGraph", "LangChain", "FastAPI", "Redis", "LLM", "RAG"], familiar=["SQL", "Playwright"]),
         education=[Education(institution="Mumbai University", degree="B.Tech Computer Science", start="2016", end="2020")],
     )
 
