@@ -128,3 +128,21 @@ def insert_job(db, title="GenAI Engineer", company="Acme AI Labs", location="Mum
     keys = ",".join(row)
     cur = db.write(f"INSERT INTO jobs({keys}) VALUES ({','.join('?' * len(row))})", tuple(row.values()))
     return cur.lastrowid
+
+
+# ---------------- browser (Module 5/6 tests use a real headless Chromium on local HTML files) ----------------
+@pytest.fixture(scope="session")
+def _browser():
+    from playwright.sync_api import sync_playwright
+    with sync_playwright() as p:
+        b = p.chromium.launch(headless=True)
+        yield b
+        b.close()
+
+
+@pytest.fixture
+def page(_browser):
+    ctx = _browser.new_context(viewport={"width": 1100, "height": 900})
+    pg = ctx.new_page()
+    yield pg
+    ctx.close()
