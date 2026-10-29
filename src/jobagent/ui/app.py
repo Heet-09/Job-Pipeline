@@ -3,7 +3,13 @@
 Reads the same SQLite database the pipeline writes. Everything here is local: nothing leaves your machine.
 """
 import os
+import sys
 from pathlib import Path
+
+# Works however it is started (`streamlit run src/jobagent/ui/app.py`, `jobagent ui`, or after `pip install -e .`).
+_SRC = str(Path(__file__).resolve().parents[2])
+if _SRC not in sys.path:
+    sys.path.insert(0, _SRC)
 
 import pandas as pd
 import streamlit as st

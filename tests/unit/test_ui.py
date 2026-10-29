@@ -233,3 +233,14 @@ def test_health_page_warns_when_auto_submit_is_on_or_profile_is_missing(run_app)
     goto(at, "Health")
     assert any("No profile" in w.value for w in at.warning)
     assert {m.label: m.value for m in at.metric}["Auto-submit"] == "off"
+
+
+def test_app_imports_when_launched_directly_without_pythonpath(tmp_path):
+    """Regression: `streamlit run src/jobagent/ui/app.py` used to fail with ModuleNotFoundError: No module named 'jobagent'."""
+    import os
+    import subprocess
+    import sys
+    env = {k: v for k, v in os.environ.items() if k != "PYTHONPATH"}
+    env.update(JOBAGENT_DB=str(tmp_path / "x.db"), JOBAGENT_PROFILE=str(tmp_path / "p.json"))
+    r = subprocess.run([sys.executable, str(APP)], cwd=tmp_path, env=env, capture_output=True, text=True, timeout=120)
+    assert "ModuleNotFoundError" not in r.stderr, r.stderr[-600:]
