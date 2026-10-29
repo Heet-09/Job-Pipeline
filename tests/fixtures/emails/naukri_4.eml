@@ -1,0 +1,34 @@
+From: Naukri Job Alerts <info@naukri.com>
+To: me@example.com
+Subject: Jobs for you: AI Engineer
+Message-ID: <nk-4@fixture>
+Date: Thu, 29 Oct 2026 06:00:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============0092492727947273727=="
+
+--===============0092492727947273727==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Plain text version of the alert
+
+--===============0092492727947273727==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><table><tr><td><a href=3D"https://www.naukri.com/job-listings-pyt=
+hon-developer-juno-mobility-50300?src=3DjobAlert&sid=3D1">Python Developer</a=
+><span class=3D"comp">Juno Mobility</span><span class=3D"exp">Exp: 1-4 Yrs</s=
+pan><span class=3D"loc">Hyderabad</span><span class=3D"posted">1 day ago</spa=
+n></td></tr><tr><td><a href=3D"https://www.naukri.com/job-listings-agent-deve=
+loper-kappa-retail-50301?src=3DjobAlert&sid=3D1">Agent Developer</a><span cla=
+ss=3D"comp">Kappa Retail</span><span class=3D"exp">Exp: 1-4 Yrs</span><span c=
+lass=3D"loc">Mumbai</span><span class=3D"posted">2 days ago</span></td></tr><=
+tr><td><a href=3D"https://www.naukri.com/job-listings-nlp-engineer-lumen-edu-=
+50302?src=3DjobAlert&sid=3D1">NLP Engineer</a><span class=3D"comp">Lumen Edu<=
+/span><span class=3D"exp">Exp: 1-4 Yrs</span><span class=3D"loc">Pune</span><=
+span class=3D"posted">1 day ago</span></td></tr></table></body></html>
+
+--===============0092492727947273727==--

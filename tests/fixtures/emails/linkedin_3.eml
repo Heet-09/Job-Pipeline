@@ -1,0 +1,31 @@
+From: LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>
+To: me@example.com
+Subject: 3 new jobs for AI Engineer
+Message-ID: <li-3@fixture>
+Date: Thu, 29 Oct 2026 06:00:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6211611377657683123=="
+
+--===============6211611377657683123==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Plain text version of the alert
+
+--===============6211611377657683123==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><table><tr><td><a href=3D"https://www.linkedin.com/comm/jobs/view=
+/40200?trackingId=3Dabc&refId=3Dxyz&trk=3Deml-job_alerts">NLP Engineer</a><p>=
+Gamma Health =C2=B7 Pune, India</p><p>1 day ago</p></td></tr><tr><td><a href=
+=3D"https://www.linkedin.com/comm/jobs/view/40201?trackingId=3Dabc&refId=3Dxy=
+z&trk=3Deml-job_alerts">AI Research Engineer</a><p>Helix Bio =C2=B7 Bengaluru=
+, India</p><p>2 days ago</p></td></tr><tr><td><a href=3D"https://www.linkedin=
+.com/comm/jobs/view/40202?trackingId=3Dabc&refId=3Dxyz&trk=3Deml-job_alerts">=
+Applied AI Engineer</a><p>Indigo Pay =C2=B7 Remote</p><p>1 day ago</p></td></=
+tr></table></body></html>
+
+--===============6211611377657683123==--

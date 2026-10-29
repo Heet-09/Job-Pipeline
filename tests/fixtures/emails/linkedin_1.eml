@@ -1,0 +1,31 @@
+From: LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>
+To: me@example.com
+Subject: 3 new jobs for AI Engineer
+Message-ID: <li-1@fixture>
+Date: Thu, 29 Oct 2026 06:00:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3220451955031961257=="
+
+--===============3220451955031961257==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Plain text version of the alert
+
+--===============3220451955031961257==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><table><tr><td><a href=3D"https://www.linkedin.com/comm/jobs/view=
+/40000?trackingId=3Dabc&refId=3Dxyz&trk=3Deml-job_alerts">GenAI Engineer</a><=
+p>Acme AI Labs =C2=B7 Mumbai, India</p><p>1 day ago</p></td></tr><tr><td><a h=
+ref=3D"https://www.linkedin.com/comm/jobs/view/40001?trackingId=3Dabc&refId=
+=3Dxyz&trk=3Deml-job_alerts">LLM Engineer</a><p>Beta Systems =C2=B7 Pune, Ind=
+ia</p><p>2 days ago</p></td></tr><tr><td><a href=3D"https://www.linkedin.com/=
+comm/jobs/view/40002?trackingId=3Dabc&refId=3Dxyz&trk=3Deml-job_alerts">AI En=
+gineer</a><p>Cyan Robotics =C2=B7 Bengaluru, India</p><p>1 day ago</p></td></=
+tr></table></body></html>
+
+--===============3220451955031961257==--

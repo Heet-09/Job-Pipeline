@@ -1,0 +1,24 @@
+From: LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>
+To: me@example.com
+Subject: 3 new jobs
+Message-ID: <li-changed@fixture>
+Date: Thu, 29 Oct 2026 06:00:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8628713560015145363=="
+
+--===============8628713560015145363==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Plain text version of the alert
+
+--===============8628713560015145363==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><div class=3D'card-v2'><span>Open the app to view your jobs</span=
+></div></body></html>
+
+--===============8628713560015145363==--

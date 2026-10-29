@@ -1,0 +1,6 @@
+auto_submit: false            # SAF-01: keep false; every application needs human approval
+
+models: {small: "llama-3.1-8b-instant", large: "llama-3.3-70b-versatile"}
+thresholds: {score_go: 70, score_maybe: 50, auto_tailor: 80, bank_min_sim: 0.90, match_min_score: 80, match_min_margin: 10}
+limits: {daily_submit_cap: 15, max_pages: 8, jd_max_age_days: 3, ghost_after_days: 14, max_attempts: 3, lease_min: 15}
+delays: {between_submits_sec: [45, 120]}

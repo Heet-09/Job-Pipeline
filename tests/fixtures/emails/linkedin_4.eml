@@ -1,0 +1,31 @@
+From: LinkedIn Job Alerts <jobalerts-noreply@linkedin.com>
+To: me@example.com
+Subject: 3 new jobs for AI Engineer
+Message-ID: <li-4@fixture>
+Date: Thu, 29 Oct 2026 06:00:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7295829329615319798=="
+
+--===============7295829329615319798==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Plain text version of the alert
+
+--===============7295829329615319798==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><table><tr><td><a href=3D"https://www.linkedin.com/comm/jobs/view=
+/40300?trackingId=3Dabc&refId=3Dxyz&trk=3Deml-job_alerts">Machine Learning En=
+gineer</a><p>Juno Mobility =C2=B7 Hyderabad, India</p><p>2 days ago</p></td><=
+/tr><tr><td><a href=3D"https://www.linkedin.com/comm/jobs/view/40301?tracking=
+Id=3Dabc&refId=3Dxyz&trk=3Deml-job_alerts">GenAI Engineer</a><p>Kappa Retail =
+=C2=B7 Mumbai, India</p><p>1 day ago</p></td></tr><tr><td><a href=3D"https://=
+www.linkedin.com/comm/jobs/view/40302?trackingId=3Dabc&refId=3Dxyz&trk=3Deml-=
+job_alerts">LLM Engineer</a><p>Lumen Edu =C2=B7 Pune, India</p><p>2 days ago<=
+/p></td></tr></table></body></html>
+
+--===============7295829329615319798==--

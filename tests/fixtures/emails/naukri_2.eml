@@ -1,0 +1,35 @@
+From: Naukri Job Alerts <info@naukri.com>
+To: me@example.com
+Subject: Jobs for you: AI Engineer
+Message-ID: <nk-2@fixture>
+Date: Thu, 29 Oct 2026 06:00:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============5544868870200422339=="
+
+--===============5544868870200422339==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Plain text version of the alert
+
+--===============5544868870200422339==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><table><tr><td><a href=3D"https://www.naukri.com/job-listings-app=
+lied-ai-engineer-delta-cloud-50100?src=3DjobAlert&sid=3D1">Applied AI Enginee=
+r</a><span class=3D"comp">Delta Cloud</span><span class=3D"exp">Exp: 1-4 Yrs<=
+/span><span class=3D"loc">Remote</span><span class=3D"posted">1 day ago</span=
+></td></tr><tr><td><a href=3D"https://www.naukri.com/job-listings-machine-lea=
+rning-engineer-echo-analytics-50101?src=3DjobAlert&sid=3D1">Machine Learning =
+Engineer</a><span class=3D"comp">Echo Analytics</span><span class=3D"exp">Exp=
+: 1-4 Yrs</span><span class=3D"loc">Hyderabad</span><span class=3D"posted">2 =
+days ago</span></td></tr><tr><td><a href=3D"https://www.naukri.com/job-listin=
+gs-genai-engineer-foxtrot-data-50102?src=3DjobAlert&sid=3D1">GenAI Engineer</=
+a><span class=3D"comp">Foxtrot Data</span><span class=3D"exp">Exp: 1-4 Yrs</s=
+pan><span class=3D"loc">Mumbai</span><span class=3D"posted">1 day ago</span><=
+/td></tr></table></body></html>
+
+--===============5544868870200422339==--

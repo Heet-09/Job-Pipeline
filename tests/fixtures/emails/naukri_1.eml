@@ -1,0 +1,35 @@
+From: Naukri Job Alerts <info@naukri.com>
+To: me@example.com
+Subject: Jobs for you: AI Engineer
+Message-ID: <nk-1@fixture>
+Date: Thu, 29 Oct 2026 06:00:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8342666314787923817=="
+
+--===============8342666314787923817==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Plain text version of the alert
+
+--===============8342666314787923817==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><table><tr><td><a href=3D"https://www.naukri.com/job-listings-age=
+nt-developer-acme-ai-labs-50000?src=3DjobAlert&sid=3D1">Agent Developer</a><s=
+pan class=3D"comp">Acme AI Labs</span><span class=3D"exp">Exp: 1-4 Yrs</span>=
+<span class=3D"loc">Mumbai</span><span class=3D"posted">2 days ago</span></td=
+></tr><tr><td><a href=3D"https://www.naukri.com/job-listings-nlp-engineer-bet=
+a-systems-50001?src=3DjobAlert&sid=3D1">NLP Engineer</a><span class=3D"comp">=
+Beta Systems</span><span class=3D"exp">Exp: 1-4 Yrs</span><span class=3D"loc"=
+>Pune</span><span class=3D"posted">1 day ago</span></td></tr><tr><td><a href=
+=3D"https://www.naukri.com/job-listings-ai-research-engineer-cyan-robotics-50=
+002?src=3DjobAlert&sid=3D1">AI Research Engineer</a><span class=3D"comp">Cyan=
+ Robotics</span><span class=3D"exp">Exp: 1-4 Yrs</span><span class=3D"loc">Be=
+ngaluru</span><span class=3D"posted">2 days ago</span></td></tr></table></bod=
+y></html>
+
+--===============8342666314787923817==--

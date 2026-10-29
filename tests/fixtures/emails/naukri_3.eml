@@ -1,0 +1,34 @@
+From: Naukri Job Alerts <info@naukri.com>
+To: me@example.com
+Subject: Jobs for you: AI Engineer
+Message-ID: <nk-3@fixture>
+Date: Thu, 29 Oct 2026 06:00:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============5186499647884513093=="
+
+--===============5186499647884513093==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Plain text version of the alert
+
+--===============5186499647884513093==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><table><tr><td><a href=3D"https://www.naukri.com/job-listings-llm=
+-engineer-gamma-health-50200?src=3DjobAlert&sid=3D1">LLM Engineer</a><span cl=
+ass=3D"comp">Gamma Health</span><span class=3D"exp">Exp: 1-4 Yrs</span><span =
+class=3D"loc">Pune</span><span class=3D"posted">2 days ago</span></td></tr><t=
+r><td><a href=3D"https://www.naukri.com/job-listings-ai-engineer-helix-bio-50=
+201?src=3DjobAlert&sid=3D1">AI Engineer</a><span class=3D"comp">Helix Bio</sp=
+an><span class=3D"exp">Exp: 1-4 Yrs</span><span class=3D"loc">Bengaluru</span=
+><span class=3D"posted">1 day ago</span></td></tr><tr><td><a href=3D"https://=
+www.naukri.com/job-listings-ml-engineer-indigo-pay-50202?src=3DjobAlert&sid=
+=3D1">ML Engineer</a><span class=3D"comp">Indigo Pay</span><span class=3D"exp=
+">Exp: 1-4 Yrs</span><span class=3D"loc">Remote</span><span class=3D"posted">=
+2 days ago</span></td></tr></table></body></html>
+
+--===============5186499647884513093==--

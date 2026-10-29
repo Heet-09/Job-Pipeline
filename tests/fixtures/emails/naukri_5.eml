@@ -1,0 +1,35 @@
+From: Naukri Job Alerts <info@naukri.com>
+To: me@example.com
+Subject: Jobs for you: AI Engineer
+Message-ID: <nk-5@fixture>
+Date: Thu, 29 Oct 2026 06:00:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7900173821479727479=="
+
+--===============7900173821479727479==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Plain text version of the alert
+
+--===============7900173821479727479==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><table><tr><td><a href=3D"https://www.naukri.com/job-listings-ai-=
+research-engineer-mango-media-50400?src=3DjobAlert&sid=3D1">AI Research Engin=
+eer</a><span class=3D"comp">Mango Media</span><span class=3D"exp">Exp: 1-4 Yr=
+s</span><span class=3D"loc">Bengaluru</span><span class=3D"posted">2 days ago=
+</span></td></tr><tr><td><a href=3D"https://www.naukri.com/job-listings-appli=
+ed-ai-engineer-nimbus-labs-50401?src=3DjobAlert&sid=3D1">Applied AI Engineer<=
+/a><span class=3D"comp">Nimbus Labs</span><span class=3D"exp">Exp: 1-4 Yrs</s=
+pan><span class=3D"loc">Remote</span><span class=3D"posted">1 day ago</span><=
+/td></tr><tr><td><a href=3D"https://www.naukri.com/job-listings-machine-learn=
+ing-engineer-orbit-space-50402?src=3DjobAlert&sid=3D1">Machine Learning Engin=
+eer</a><span class=3D"comp">Orbit Space</span><span class=3D"exp">Exp: 1-4 Yr=
+s</span><span class=3D"loc">Hyderabad</span><span class=3D"posted">2 days ago=
+</span></td></tr></table></body></html>
+
+--===============7900173821479727479==--
