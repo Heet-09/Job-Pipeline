@@ -31,8 +31,7 @@ def main(argv=None) -> int:
         except MissingSensitiveError as e:
             print(f"ERROR: {e}", file=sys.stderr)
             return 1
-        print("
-".join(f"WARNING: {m}" for m in msgs) or "profile ok: all sensitive fields are set")
+        print("\n".join(f"WARNING: {m}" for m in msgs) or "profile ok: all sensitive fields are set")
         return 0
     if args.cmd == "set-sensitive":
         import json
