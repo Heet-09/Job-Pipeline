@@ -2,10 +2,12 @@
 name = "jobagent"
 version = "0.1.0"
 requires-python = ">=3.11"
-dependencies = ["pydantic>=2", "pypdf", "langchain-core", "langchain-groq"]
+dependencies = ["pydantic>=2", "pypdf", "langchain-core", "langchain-groq", "playwright", "beautifulsoup4", "rapidfuzz",
+    "python-dateutil", "pyyaml", "reportlab", "pandas", "openpyxl"]
 
 [project.optional-dependencies]
-dev = ["pytest", "reportlab"]
+ui = ["streamlit", "pandas"]
+dev = ["pytest", "reportlab", "streamlit", "pandas", "pillow"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

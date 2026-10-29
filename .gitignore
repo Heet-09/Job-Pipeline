@@ -3,3 +3,8 @@ __pycache__/
 .env
 data/profile.json
 .pytest_cache/
+data/demo/
+data/*.db
+data/*.db-*
+data/screenshots/
+data/resumes/

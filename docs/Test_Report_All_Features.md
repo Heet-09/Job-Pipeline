@@ -11,7 +11,7 @@ Date: 2026-10-29 | Branch: `feature/prf-01-resume-to-profile` | Python 3.13, pyt
 | **Pass** | **115** |
 | Fail | 0 |
 | Not Run | 0 |
-| Automated tests executed | 234 (0 failed), 44 s |
+| Automated tests executed | 268 (0 failed), 70 s |
 
 Per-test-case Status, Actual Result and Remarks are written into `Job_Pipeline_Agent_TestCases.xlsx` (regenerate with `python scripts/apply_results.py junit.xml`).
 A test case is marked Pass only when at least one automated test carries its id (`test_tcNNN_...`) and every such test passed.

@@ -38,6 +38,24 @@ python -m jobagent.cli digest                                       # Apply / Ma
 - The same filters, de-duplication and alerts apply as for email jobs (a job seen in both places is one row).
 - New files: `naukri_scrape.py`, `scraper_source.py`; changed: `f1_discovery/run.py` (shared `Ingest` + `run_scraper_discovery`), `prefilter.py` (wider default keywords, 4+ letter keywords match longer words), `f2_scoring/run.py` (uses stored JD), `cli.py` (`collect-naukri`, `score`, `digest`), `config/search_prefs.yaml` (broad starter prefs).
 
+## Dashboard (UI to track everything)
+
+```bash
+python -m jobagent.cli ui                 # opens http://localhost:8501 on YOUR data/jobagent.db
+python -m jobagent.cli ui --demo          # same UI on a separate database full of FAKE demo data
+```
+Local only (Streamlit, reads the same SQLite file the pipeline writes). Code: `src/jobagent/ui/` (`data.py` = queries and actions, `app.py` = pages, `demo.py` = fake data).
+
+| Page | What you see / do |
+|---|---|
+| **Overview** | Key numbers (jobs found, Apply, Maybe, ready to review, submitted, interviews), today's submits vs the daily cap, a **"Needs your attention"** list (NEEDS_HUMAN, submit without confirmation, filled-awaiting-approval, unmatched emails, interviews, failed jobs, missing profile / sensitive fields) with an Open button for each, pipeline chart by status, 7-day funnel, response rate by score bucket, LLM spend |
+| **Jobs** | Every job with filters (status, source, min score, search). Tick a row: score breakdown with the reason, extracted skills/experience/salary, full JD, status history; buttons **Apply anyway** (Maybe/Reject) and **Skip** |
+| **Review** | Filled / needs-you applications: why the agent stopped, every answer with its source and confidence (yellow = check), edit and Save (remembered in the Answer Bank), form screenshots, resume diff and PDF download, **Approve and submit** (locked behind a confirmation tick; opens a visible browser; respects the daily cap and the duplicate guard) and Skip |
+| **Applications** | Submitted applications with days since submit and **days until GHOSTED**, email/status history, confirmation screenshot, manual status change |
+| **Inbox** | Emails the agent could not match or understand: attach to an application with a status, or dismiss |
+| **Answer Bank** | Saved answers: edit (marks human-approved), delete, run cleanup |
+| **Health** | auto-submit / cap settings, profile status and versions, LLM calls and cost per flow, recent status changes |
+
 ## How each feature is implemented
 
 ### 1. Profile

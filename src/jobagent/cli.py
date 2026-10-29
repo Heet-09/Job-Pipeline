@@ -42,6 +42,11 @@ def _build_parser() -> argparse.ArgumentParser:
     sc.add_argument("--db", type=Path, default=DEFAULT_DB)
     sc.add_argument("--profile", type=Path, default=DEFAULT_PROFILE_PATH)
     sc.add_argument("--llm", action="store_true", help="use the LLM (needs GROQ_API_KEY); default is the rule-based scorer")
+    ui = sub.add_parser("ui", help="Open the dashboard in your browser")
+    ui.add_argument("--db", type=Path, default=DEFAULT_DB)
+    ui.add_argument("--profile", type=Path, default=DEFAULT_PROFILE_PATH)
+    ui.add_argument("--port", type=int, default=8501)
+    ui.add_argument("--demo", action="store_true", help="use a separate database filled with FAKE demo data")
     dg = sub.add_parser("digest", help="Print the daily digest of new Apply/Maybe jobs")
     dg.add_argument("--db", type=Path, default=DEFAULT_DB)
     return ap
@@ -132,8 +137,33 @@ def _cmd_jobs(args) -> int:
     return 0
 
 
+def _cmd_ui(args) -> int:
+    import os
+    import subprocess
+    src = str(Path(__file__).resolve().parents[1])
+    db = args.db
+    if args.demo:
+        from jobagent.core.db import Database
+        from jobagent.ui.demo import seed_demo
+        db = Path("data/demo/demo.db")
+        db.parent.mkdir(parents=True, exist_ok=True)
+        if db.exists():
+            db.unlink()
+        d = Database(db)
+        seed_demo(d, db.parent / "screenshots")
+        d.close()
+        print(f"Demo mode: FAKE data in {db} (your real database is untouched)")
+    env = {**os.environ, "JOBAGENT_DB": str(db), "JOBAGENT_PROFILE": str(args.profile),
+           "PYTHONPATH": src + os.pathsep + os.environ.get("PYTHONPATH", "")}
+    app = Path(__file__).resolve().parent / "ui" / "app.py"
+    return subprocess.call([sys.executable, "-m", "streamlit", "run", str(app), "--server.port", str(args.port),
+                            "--browser.gatherUsageStats", "false", "--client.toolbarMode", "minimal"], env=env)
+
+
 def main(argv=None) -> int:
     args = _build_parser().parse_args(argv)
+    if args.cmd == "ui":
+        return _cmd_ui(args)
     if args.cmd in ("collect-naukri", "score", "digest"):
         return _cmd_jobs(args)
     return _cmd_profile(args)
