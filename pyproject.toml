@@ -5,6 +5,9 @@ requires-python = ">=3.11"
 dependencies = ["pydantic>=2", "pypdf", "langchain-core", "langchain-groq", "playwright", "beautifulsoup4", "rapidfuzz",
     "python-dateutil", "pyyaml", "reportlab", "pandas", "openpyxl"]
 
+[project.scripts]
+jobagent = "jobagent.cli:main"
+
 [project.optional-dependencies]
 ui = ["streamlit", "pandas"]
 dev = ["pytest", "reportlab", "streamlit", "pandas", "pillow"]
