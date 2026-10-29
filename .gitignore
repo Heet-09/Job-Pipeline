@@ -1,2 +1,5 @@
 *.xlsx
 __pycache__/
+.env
+data/profile.json
+.pytest_cache/
